@@ -31,11 +31,11 @@ ADD         build.sbt /root/
 ADD         project/plugins.sbt /root/project/
 ADD         project/build.properties /root/project/
 
-# TEST THE PROJECT -- FAILURE WILL HALT IMAGE CREATION
-RUN         cd /root; /usr/local/activator/activator test
+# TEST AND BUILD THE PROJECT -- FAILURE WILL HALT IMAGE CREATION
+RUN         cd /root; /usr/local/activator/activator test stage
+RUN         rm /root/target/universal/stage/bin/*.bat
 
 # TESTS PASSED -- CONFIGURE IMAGE
 WORKDIR     /root
-ENTRYPOINT  ["/usr/local/activator/activator"]
-CMD         ["start"]
+ENTRYPOINT  target/universal/stage/bin/$(ls target/universal/stage/bin)
 EXPOSE      9000
