@@ -4,13 +4,13 @@ The official [Docker Hub](https://hub.docker.com/) provides an [Automated Builds
 
 ### Example files
 
-* `Dockerfile` creates a suitable Java environment for Play Framework, then uses [Typesafe Activator](https://typesafe.com/activator) to run the project's tests during image creation.  The image [ENTRYPOINT](http://docs.docker.com/reference/builder/#entrypoint) and default command are set to `activator start` so `docker run` will default to launching the Play project within the container.  Tests are run only once, during image creation, so all generated images are pre-certified and can be deployed and started without rerunning the tests
+* `Dockerfile` creates a suitable Java environment for Play Framework, then uses [Typesafe Activator](https://typesafe.com/activator) to test and build the project during image creation.  The image [ENTRYPOINT](http://docs.docker.com/reference/builder/#entrypoint) is set to run the optimized project so `docker run` will default to launching the Play project within the container.  Testing and compilation are performed only once, during image creation, so all generated images are pre-certified and can be deployed and started without rerunning the tests
 
-* The remainder of the files in this repo provide an example Play Framework project that responds to `activator test` and `activator start`
+* The remainder of the files in this repo provide an example Play Framework project that responds to the standard `activator` commands
 
 ### Usage
 
-1. Copy `Dockerfile` into any Play Framework project that responds to `activator test` and `activator start`
+1. Copy `Dockerfile` into any Play Framework project that responds to the standard `activator` commands
 
 1. Update the ADD commands to include all project files needed for testing and running the app
 
