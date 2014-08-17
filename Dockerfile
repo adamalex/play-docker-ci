@@ -2,7 +2,7 @@ FROM        ubuntu:14.04
 
 MAINTAINER  Adam Alexander <adamalex@gmail.com>
 
-ENV         ACTIVATOR_VERSION 1.2.7
+ENV         ACTIVATOR_VERSION 1.2.8
 ENV         DEBIAN_FRONTEND noninteractive
 
 # INSTALL OS DEPENDENCIES
